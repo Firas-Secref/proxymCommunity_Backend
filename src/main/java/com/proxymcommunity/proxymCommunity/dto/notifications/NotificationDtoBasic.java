@@ -6,6 +6,6 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class NotificationFollowDto extends NotificationDto {
+public class NotificationDtoBasic extends NotificationDto {
     private String notificationText;
 }

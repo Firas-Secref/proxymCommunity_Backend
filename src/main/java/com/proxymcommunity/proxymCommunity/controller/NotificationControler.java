@@ -31,19 +31,38 @@ public class NotificationControler {
         this.converter = converter;
     }
 
-    @MessageMapping("/notification")
-    @SendTo("/topic/newNotif")
-    public NotificationDto send(String notification) throws Exception {
+    @MessageMapping("/notificationForLike")
+    @SendTo("/topic/newNotifLike")
+    public NotificationDto sendNewLike(String notification) throws Exception {
+        System.out.println(notification);
+        return this.converter.entityToLikeDto(this.service.saveLikeNotification(notification));
+
+    }
+
+    @MessageMapping("/notificationForNewPost")
+    @SendTo("/topic/newNotifPost")
+    public String sendNewPost(String notification) throws Exception {
 
         System.out.println(notification);
-        return this.converter.entityToDto(this.service.saveNotification(notification));
+        return "normal";
+//        return this.converter.entityToDto(this.service.saveNotification(notification));
+
+    }
+
+    @MessageMapping("/notificationForNewFollow")
+    @SendTo("/topic/newNotifFollow")
+    public String sendNewFollow(String notification) throws Exception {
+
+        System.out.println(notification);
+        return "normal";
+//        return this.converter.entityToDto(this.service.saveNotification(notification));
 
     }
 
 
     @GetMapping("/myNotifications/{id}")
     public List<NotificationDto> getMyNotifications(@PathVariable Long id){
-        return this.converter.entityToDto(this.service.getMyNotifications(id));
+        return this.converter.entityToBasicDto(this.service.getMyNotifications(id));
     }
 
 
