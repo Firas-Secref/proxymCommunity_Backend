@@ -51,12 +51,8 @@ public class NotificationControler {
 
     @MessageMapping("/notificationForNewFollow")
     @SendTo("/topic/newNotifFollow")
-    public String sendNewFollow(String notification) throws Exception {
-
-        System.out.println(notification);
-        return "normal";
-//        return this.converter.entityToDto(this.service.saveNotification(notification));
-
+    public NotificationDto sendNewFollow(String notification) throws Exception {
+        return this.converter.entityToFollowDto(this.service.saveFollowNotification(notification));
     }
 
 
