@@ -59,7 +59,6 @@ public class DeveloperService {
         existingDeveloper.setVille(developer.getVille());
         existingDeveloper.setAddress(developer.getAddress());
         existingDeveloper.setPays(developer.getPays());
-        existingDeveloper.setProfileImage(developer.getProfileImage());
         existingDeveloper.setDepartement(developer.getDepartement());
         existingDeveloper.setProfile(developer.getProfile());
         return repository.save(existingDeveloper);
