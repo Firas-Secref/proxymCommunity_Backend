@@ -25,6 +25,7 @@ public class Notification implements Serializable {
     private Long to_userId;
     private String action;
     private String to_username;
+    @Column(columnDefinition = "TEXT")
     private String notificationText;
 
     public Notification(Developer developer, String to_firstname, String to_lastname, Long to_userId, String action, String to_username, String notificationText) {
